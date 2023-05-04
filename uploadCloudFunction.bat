@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-4glv0gvpfe4402cc --n quickstartFunctions --r --project "D:\project\WeChat Mini Program\cartoon" --report_first --report
