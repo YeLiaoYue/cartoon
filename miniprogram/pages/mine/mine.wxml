@@ -1,0 +1,50 @@
+<!--pages/mine/mine.wxml-->
+<!-- 导入wxs -->
+<wxs src="./mine.wxs" module="m1"></wxs>
+
+<view class="mine-page" bindtap="hiddenDelete">
+  <!-- 已登录的用户信息 -->
+  <view class="userMsg" wx:if="{{isLogin&&user_img}}">
+    <cover-image class="img" src="data:image/png;base64,{{user_img}}" bindtap="changeUserImg"></cover-image>
+    <view capture-bind:longpress="showChangeUserName">{{user_name}}</view>
+    <view class="quit" bindtap="quitLogin">退出登录</view>
+  </view>
+  <!-- 未登录显示的内容 -->
+  <view class="userMsg" bindtap="login" wx:else>
+    <cover-image class="img" src="https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132"></cover-image>
+    <view>点击登录</view>
+  </view>
+  <!-- 修改用户名的弹窗 -->
+  <page-container class="change_user_name" show="{{is_change_name}}">
+    <view class="title">修改用户名</view>
+    <input class="user_name" type="text" value="{{user_name}}" bindconfirm="changeUserName" />
+  </page-container>
+  <!-- 是否登录的弹窗 -->
+  <view class="login_popup" wx:if="{{is_login}}">
+    <view class="popup-box">
+      <view class="title">是否登录?</view>
+      <view class="confirm_cancel">
+        <view class="button confirm" bindtap="confirm">是</view>
+        <view class="button cancel" bindtap="cancel">否</view>
+      </view>
+    </view>
+  </view>
+  <!-- 我的关注和阅读历史的标题 -->
+  <view class="nav-header">
+    <view class="rack+({{type=='rack'?'active':''}})" data-type="rack" bindtap="changeType">我的关注</view>
+    <view class="history+{{type!='rack'?'active':''}}" data-type="history" bindtap="changeType">阅读历史</view>
+  </view>
+  <!-- 我的关注或阅读历史的数据显示 -->
+  <view class="list-box+({{is_delete?'delete':''}})">
+    <view class="hint" wx:if="{{!list||list.length==0}}">暂无数据</view>
+    <view class="list" wx:for="{{list}}" wx:key="_id" data-season_id="{{item._id}}" data-title="{{item.title}}" bindtap="toParticulars" capture-bind:longpress="addDelete">
+      <cover-image class="img" src="{{item.img}}@220w.jpg"></cover-image>
+      <view class="title">{{item.title}}</view>
+      <view class="history" wx:if="{{m1.reg(item.short_title)}}">看到第{{item.short_title}}话</view>
+      <view class="history" wx:else>看到{{item.short_title}}</view>
+      <view class="total" wx:if="{{item.is_finish==1}}">共{{item.total}}话</view>
+      <view class="total" wx:else>更新到{{item.total}}话</view>
+      <view class="delete-icon" data-id="{{item._id}}" catchtap="delete">✖</view>
+    </view>
+  </view>
+</view>

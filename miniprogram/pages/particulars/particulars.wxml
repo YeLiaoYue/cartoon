@@ -1,0 +1,89 @@
+<!--pages/particulars/particulars.wxml-->
+<!-- 导入骨架屏 -->
+<wxs src="./particulars.wxs" module="m1"></wxs>
+
+<view class="particulars-view" wx:if="{{!loading}}">
+  <!-- 漫画的图片，出版社，类型以及id -->
+  <view class="particulars-header">
+    <cover-image class="img" lazy-load="true" src="{{msg.horizontal_cover}}@600w.png"></cover-image>
+    <view class="msg">
+      <view class="title">{{msg.title}}</view>
+      <view class="author-style">
+        <text class="authors" wx:for="{{msg.author_name}}" wx:key="index">
+          <text wx:if="{{index!=0}}">、</text>{{item}}</text>
+        <text class="style" wx:for="{{msg.styles}}" wx:for-item="style" wx:key="index"> · {{style}}</text>
+        <text class="id"> · MC{{msg.id}}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 漫画的是否追漫，继续观看，是否完结，简介，目录，评论 -->
+  <view class="particulars-middle">
+    <view class="join-button">
+      <view class="join" wx:if="{{isJoin}}" bindtap="changeIsJoin">
+        <view class="img">
+          <cover-image src="data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IuWbvuWxgiAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTcuNTUgMjAuODVhMS44NCAxLjg0IDAgMDEtMi4zNS0xLjEzIDEuODIgMS44MiAwIDAxLS4xLS42NmwuMTEtNC4xM2ExLjM4IDEuMzggMCAwMC0uMjgtLjg4bC0yLjU1LTMuMjZhMS44NCAxLjg0IDAgMDEuMzEtMi41OSAxLjkzIDEuOTMgMCAwMS42Mi0uMzJsNC4wNS0xLjE3YTEuNDMgMS40MyAwIDAwLjczLS41M2wyLjQtMy40NWExLjg0IDEuODQgMCAwMTMgMGwyLjQgMy40NWExLjQzIDEuNDMgMCAwMC43My41M2w0IDEuMTdhMS44NSAxLjg1IDAgMDExLjI2IDIuMjkgMS43NSAxLjc1IDAgMDEtLjMyLjYybC0yLjU1IDMuMjZhMS4zOCAxLjM4IDAgMDAtLjI4Ljg4bC4xMSA0LjEzQTEuODQgMS44NCAwIDAxMTcuMTEgMjFhMS44NyAxLjg3IDAgMDEtLjY2LS4xMWwtNC0xLjRhMS4zOSAxLjM5IDAgMDAtLjkgMHoiIGZpbGw9IiNmZmQzNTkiLz48cGF0aCBkPSJNMTIuODcgMTguMjNsNCAxLjQxYS42NC42NCAwIDAwLjIgMCAuNTcuNTcgMCAwMC41NC0uNTdMMTcuNSAxNWEyLjY0IDIuNjQgMCAwMS41Ni0xLjdsMi41NS0zLjNhLjUxLjUxIDAgMDAuMDktLjE4LjU1LjU1IDAgMDAtLjM3LS42OWwtNC0xLjE4YTIuNiAyLjYgMCAwMS0xLjQzLTFsLTIuNDQtMy40OGEuNjIuNjIgMCAwMC0uMTQtLjE0LjU2LjU2IDAgMDAtLjc4LjE0TDkuMTUgNi45MWEyLjU5IDIuNTkgMCAwMS0xLjQ0IDFsLTQgMS4xOGEuNjEuNjEgMCAwMC0uMTguMDkuNTYuNTYgMCAwMC0uMS43OGwyLjU1IDMuMjdBMi42NCAyLjY0IDAgMDE2LjUgMTVsLS4xMiA0LjFhLjQ4LjQ4IDAgMDAwIC4yLjU1LjU1IDAgMDAuNy4zNGw0LTEuNDFhMi43MyAyLjczIDAgMDExLjc5IDB6bS01LjMyIDIuNjJhMS44NCAxLjg0IDAgMDEtMi4zNS0xLjEzIDEuODIgMS44MiAwIDAxLS4xLS42NmwuMTEtNC4xM2ExLjM4IDEuMzggMCAwMC0uMjgtLjg4bC0yLjU1LTMuMjZhMS44NCAxLjg0IDAgMDEuMzEtMi41OSAxLjkzIDEuOTMgMCAwMS42Mi0uMzJsNC4wNS0xLjE3YTEuNDMgMS40MyAwIDAwLjczLS41M2wyLjQtMy40NWExLjg0IDEuODQgMCAwMTMgMGwyLjQgMy40NWExLjQzIDEuNDMgMCAwMC43My41M2w0IDEuMTdhMS44NSAxLjg1IDAgMDExLjI2IDIuMjkgMS43NSAxLjc1IDAgMDEtLjMyLjYybC0yLjU1IDMuMjZhMS4zOCAxLjM4IDAgMDAtLjI4Ljg4bC4xMSA0LjEzQTEuODQgMS44NCAwIDAxMTcuMTEgMjFhMS44NyAxLjg3IDAgMDEtLjY2LS4xMWwtNC0xLjRhMS4zOSAxLjM5IDAgMDAtLjkgMHoiIGZpbGw9IiNmMDlmMDAiLz48L3N2Zz4="></cover-image>
+        </view> 已追
+      </view>
+      <view class="join" wx:else bindtap="changeIsJoin">
+        <view class="img">
+          <cover-image src="data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IuWbvuWxgiAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEzLjQ3IDIwLjA1bC0zLjI0IDEuMTRhMS4yMSAxLjIxIDAgMDEtMS41My0uNzQgMS4yNSAxLjI1IDAgMDEtLjA3LS40NWwuMS0zLjM0YTIgMiAwIDAwLS40My0xLjI5bC0yLjA1LTIuNjFhMS4xOCAxLjE4IDAgMDEuNjEtMS44OWwzLjI2LS45NWEyLjA1IDIuMDUgMCAwMDEuMDktLjc4bDEuOTQtMi43OWExLjE5IDEuMTkgMCAwMTEuNjctLjMgMS4yMiAxLjIyIDAgMDEuMy4zbDEuOTQgMi43OWEyIDIgMCAwMDEuMDguNzhsMy4yNy45NWExLjE5IDEuMTkgMCAwMS44MSAxLjQ4IDEuMiAxLjIgMCAwMS0uMi40MUwyMCAxNS4zOWExLjk0IDEuOTQgMCAwMC0uNDIgMS4yOWwuMDUgMy4zMmExLjIgMS4yIDAgMDEtMS4xNyAxLjIzIDEuMjggMS4yOCAwIDAxLS40My0uMDZsLTMuMjQtMS4xNGEyIDIgMCAwMC0xLjMyLjAyeiIgZmlsbD0iI2ZmZDY1MSIgZmlsbC1vcGFjaXR5PSIuNiIvPjxwYXRoIGQ9Ik0xMi44NyAxOC4yM2w0IDEuNDFhLjY0LjY0IDAgMDAuMiAwIC41Ny41NyAwIDAwLjU0LS41N0wxNy41IDE1YTIuNjQgMi42NCAwIDAxLjU2LTEuN2wyLjU1LTMuM2EuNTEuNTEgMCAwMC4wOS0uMTguNTUuNTUgMCAwMC0uMzctLjY5bC00LTEuMThhMi42IDIuNiAwIDAxLTEuNDMtMWwtMi40NC0zLjQ4YS42Mi42MiAwIDAwLS4xNC0uMTQuNTYuNTYgMCAwMC0uNzguMTRMOS4xNSA2LjkxYTIuNTkgMi41OSAwIDAxLTEuNDQgMWwtNCAxLjE4YS42MS42MSAwIDAwLS4xOC4wOS41Ni41NiAwIDAwLS4xLjc4bDIuNTUgMy4yN0EyLjY0IDIuNjQgMCAwMTYuNSAxNWwtLjEyIDQuMWEuNDguNDggMCAwMDAgLjIuNTUuNTUgMCAwMC43LjM0bDQtMS40MWEyLjczIDIuNzMgMCAwMTEuNzkgMHptLTUuMzIgMi42MmExLjg0IDEuODQgMCAwMS0yLjM1LTEuMTMgMS44MiAxLjgyIDAgMDEtLjEtLjY2bC4xMS00LjEzYTEuMzggMS4zOCAwIDAwLS4yOC0uODhsLTIuNTUtMy4yNmExLjg0IDEuODQgMCAwMS4zMS0yLjU5IDEuOTMgMS45MyAwIDAxLjYyLS4zMmw0LjA1LTEuMTdhMS40MyAxLjQzIDAgMDAuNzMtLjUzbDIuNC0zLjQ1YTEuODQgMS44NCAwIDAxMyAwbDIuNCAzLjQ1YTEuNDMgMS40MyAwIDAwLjczLjUzbDQgMS4xN2ExLjg1IDEuODUgMCAwMTEuMjYgMi4yOSAxLjc1IDEuNzUgMCAwMS0uMzIuNjJsLTIuNTUgMy4yNmExLjM4IDEuMzggMCAwMC0uMjguODhsLjExIDQuMTNBMS44NCAxLjg0IDAgMDExNy4xMSAyMWExLjg3IDEuODcgMCAwMS0uNjYtLjExbC00LTEuNGExLjM5IDEuMzkgMCAwMC0uOSAweiIgZmlsbD0iI2Y1YWMxMSIvPjwvc3ZnPg=="></cover-image>
+        </view> 追漫
+      </view>
+      <view class="button" wx:if="{{!m1.reg(ep_list[ep_index].short_title)}}" data-comic_id="{{msg.id}}" data-ep_id="{{ep_list[ep_index].id}}" data-title="{{msg.title}}" bindtap="toRead">看{{ep_list[ep_index].short_title}}</view>
+      <view class="button" wx:else data-comic_id="{{msg.id}}" data-ep_id="{{ep_list[ep_index].id}}" data-title="{{msg.title}}" bindtap="toRead">看第{{ep_list[ep_index].short_title}}话</view>
+    </view>
+    <view class="isFinish">
+      <text wx:if="{{msg.is_finish==1}}">已完结</text><text wx:else>连载中</text>
+    </view>
+    <view class="synopsis+({{isHideSynopsis?'show':''}})" wx:if="{{msg&&isHideSynopsis}}">
+      {{m1.changeSynopsis(msg.classic_lines,isHideSynopsis)}}...
+      <text class="icon" bindtap="changeIsHideSynopsis"></text>
+    </view>
+    <view class="synopsis" wx:else>
+      {{m1.changeSynopsis(msg.classic_lines,isHideSynopsis)}}
+    </view>
+    <view class="chapter-header">
+      <text>全部章节 ({{msg.total}})</text>
+      <text class="sort ascending" wx:if="{{ascending}}" bindtap="changeAscending">升序</text>
+      <text class="sort descending" wx:else bindtap="changeAscending">降序</text>
+    </view>
+    <view class="chapter-box" wx:if="{{msg}}">
+      <view class="chapter" wx:for="{{m1.changeList(ep_list,isShowAll,ascending)}}" wx:key="index" data-comic_id="{{msg.id}}" data-ep_id="{{item.id}}" data-title="{{msg.title}}" bindtap="toRead">
+        {{item.short_title}}
+      </view>
+      <view class="chapter" wx:if="{{!isShowAll&&ep_list.length>7}}" bindtap="chageIsShowAll">
+        ...
+      </view>
+    </view>
+    <!-- 漫画的相关推荐 -->
+    <view class="comment-header" wx:if="{{comment.replies.length>0}}">讨论区 ({{m1.commentFormatting(comment.page.acount)}})</view>
+    <view class="comment-box" wx:if="{{comment.replies.length>0}}">
+      <view class="comment" wx:for="{{comment.replies}}" wx:key="index">
+        <view class="user">
+          <cover-image class="img" src="{{item.member.avatar}}"></cover-image>
+          <view class="uname-time">
+            <view class="uname">{{item.member.uname}}</view>
+            <view class="time">{{m1.getDateTime(item.ctime)}}</view>
+          </view>
+        </view>
+        <view class="comment-content">{{item.content.message}}</view>
+      </view>
+    </view>
+  </view>
+
+  <template name="content">
+    <view class="list-box" data-season_id="{{season_id}}" data-title="{{title}}" bindtap="toParticulars">
+      <cover-image lazy-load="true" class="img" src="{{vertical_cover+'@200w.jpg'}}"></cover-image>
+      <view class="title">{{title}}</view>
+      <view class="msg">
+        <text wx:if="{{is_finish==1}}">[完结]共{{total}}话</text>
+        <text wx:else>更新至{{last_short_title}}话</text>
+      </view>
+    </view>
+  </template>
+
+  <view class="recommend-title">猜你喜欢</view>
+  <view class="particulars-recommend">
+    <template is="content" wx:for="{{recommend}}" wx:key="index" data="{{...item}}" />
+  </view>
+</view>

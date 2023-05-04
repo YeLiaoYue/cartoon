@@ -1,0 +1,103 @@
+<!--
+此文件为开发者工具生成，生成时间: 2023/4/18上午9:48:47
+使用方法：
+在 D:\project\WeChat Mini Program\cartoon\miniprogram\pages\classify\classify.wxml 引入模板
+
+```
+<import src="classify.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+```
+
+在 D:\project\WeChat Mini Program\cartoon\miniprogram\pages\classify\classify.wxss 中引入样式
+```
+@import "./classify.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="classify-header">
+      <view class="styles-box">
+        <view class="item active sk-transparent sk-text-14-2857-917 sk-text" data-style_id="-1">全部</view>
+        <view class="item sk-transparent sk-text-14-2857-617 sk-text" data-style_id="999">热血</view>
+        <view class="item sk-transparent sk-text-14-2857-504 sk-text" data-style_id="997">古风</view>
+        <view class="item sk-transparent sk-text-14-2857-836 sk-text" data-style_id="1016">玄幻</view>
+        <view class="item sk-transparent sk-text-14-2857-712 sk-text" data-style_id="998">奇幻</view>
+        <view class="item sk-transparent sk-text-14-2857-31 sk-text" data-style_id="1023">悬疑</view>
+        <view class="item sk-transparent sk-text-14-2857-54 sk-text" data-style_id="1002">都市</view>
+        <view class="item sk-transparent sk-text-14-2857-782 sk-text" data-style_id="1096">历史</view>
+        <view class="item sk-transparent sk-text-14-2857-74 sk-text" data-style_id="1092">武侠仙侠</view>
+        <view class="item sk-transparent sk-text-14-2857-814 sk-text" data-style_id="1088">游戏竞技</view>
+        <view class="item sk-transparent sk-text-14-2857-600 sk-text" data-style_id="1081">悬疑灵异</view>
+        <view class="item sk-transparent sk-text-14-2857-665 sk-text" data-style_id="1063">架空</view>
+        <view class="item sk-transparent sk-text-14-2857-53 sk-text" data-style_id="1060">青春</view>
+        <view class="item sk-transparent sk-text-14-2857-398 sk-text" data-style_id="1054">西幻</view>
+        <view class="item sk-transparent sk-text-14-2857-574 sk-text" data-style_id="1048">现代</view>
+        <view class="item sk-transparent sk-text-14-2857-97 sk-text" data-style_id="1028">正能量</view>
+        <view class="item sk-transparent sk-text-14-2857-66 sk-text" data-style_id="1015">科幻</view>
+      </view>
+      <view class="orders-button">
+        <view class="orders-box">
+          <view class="item active sk-transparent sk-text-14-2857-246 sk-text" data-order="0">人气推荐</view>
+          <view class="item sk-transparent sk-text-14-2857-642 sk-text" data-order="1">更新时间</view>
+          <view class="item sk-transparent sk-text-14-2857-80 sk-text" data-order="3">上架时间</view>
+        </view>
+        <view class="button sk-transparent sk-text-14-2857-151 sk-text sk-pseudo sk-pseudo-circle">筛选</view>
+      </view>
+    </view>
+    <view class="classify-content">
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+        <view class="title sk-transparent sk-text-14-2857-766 sk-text">鬼灭之刃</view>
+        <view class="msg">
+          <text class="sk-transparent sk-text-14-2857-698 sk-text">[完结]共208话</text>
+        </view>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+        <view class="title sk-transparent sk-text-14-2857-154 sk-text">天官赐福</view>
+        <view class="msg">
+          <text class="sk-transparent sk-text-14-2857-689 sk-text">更新至089话</text>
+        </view>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+        <view class="title sk-transparent sk-text-14-2857-427 sk-text">咒术回战</view>
+        <view class="msg">
+          <text class="sk-transparent sk-text-14-2857-680 sk-text">更新至220话</text>
+        </view>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+        <view class="title sk-transparent sk-text-14-2857-167 sk-text">一拳超人</view>
+        <view class="msg">
+          <text class="sk-transparent sk-text-14-2857-847 sk-text">更新至226话</text>
+        </view>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+        <view class="title sk-transparent sk-text-14-2857-594 sk-text">辉夜大小姐想让我告白 ~天才们的恋爱头脑战~</view>
+        <view class="msg">
+          <text class="sk-transparent sk-text-14-2857-870 sk-text">[完结]共281话</text>
+        </view>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+        <view class="title sk-transparent sk-text-14-2857-735 sk-text">间谍过家家</view>
+        <view class="msg">
+          <text class="sk-transparent sk-text-14-2857-20 sk-text">更新至SHORT话</text>
+        </view>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+      </view>
+      <view class="list-box">
+        <cover-image class="img sk-image"></cover-image>
+      </view>
+    </view>
+  </view>
+</template>

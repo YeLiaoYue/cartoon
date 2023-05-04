@@ -1,0 +1,12 @@
+// 判断数据是否大于9999,是则以w为单位
+function commentFormatting(num) {
+  if(num>=10000){
+    return (num/10000).toFixed(2)+'w'
+  }else{
+    return num
+  }
+}
+
+module.exports={
+  commentFormatting:commentFormatting
+}

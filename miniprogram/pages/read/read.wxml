@@ -1,0 +1,17 @@
+<!--pages/read/read.wxml-->
+<!-- 导入wxs -->
+<wxs src="./read.wxs" module="m1"></wxs>
+<!-- 漫画内容 -->
+<view wx:for="{{imgList}}" wx:key="index">
+  <cover-image class="img" id="img{{index}}" style="width:750rpx;height:{{content[index].y/content[index].x*750+'rpx'}}" src="{{item.url}}?token={{item.token}}"></cover-image>
+</view>
+<!-- 阅读进度以及当前章节名称 -->
+<view class="index-box" wx:if="{{content.length>0}}">
+  <view class="index">
+    {{showImgIndex}}/{{content.length}}
+  </view>
+  <view class="title" wx:if="{{!m1.reg(ep_list[currentIndex].short_title)}}">{{ep_list[currentIndex].short_title}}</view>
+  <view class="title" wx:else>
+    第{{ep_list[currentIndex].short_title}}话
+  </view>
+</view>

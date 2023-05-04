@@ -1,0 +1,48 @@
+<!--pages/classify/classify.wxml-->
+<!-- 导入骨架屏 -->
+<import src="classify.skeleton.wxml" />
+<template is="skeleton" wx:if="{{loading}}" />
+<!-- 头部分类列表 -->
+<view class="classify-header" wx:if="{{!loading}}">
+  <view class="styles-box">
+    <view class="item+({{style_id==-1?'active':''}})" bindtap="changeStyleId" data-style_id="-1">全部</view>
+    <view class="item+({{style_id==item.id?'active':''}})" wx:for="{{all_label.styles}}" wx:key="id" bindtap="changeStyleId" data-style_id="{{item.id}}">{{item.name}}</view>
+  </view>
+  <view class="hidden-box" wx:if="{{is_show}}">
+    <view class="area-box">
+      <view class="item+({{area_id==-1?'active':''}})" bindtap="changeAreaId" data-area_id="-1">全部</view>
+      <view class="item+({{area_id==item.id?'active':''}})" wx:for="{{all_label.areas}}" wx:key="id" bindtap="changeAreaId" data-area_id="{{item.id}}">{{item.name}}</view>
+    </view>
+    <view class="status-box">
+      <view class="item+({{is_finish==-1?'active':''}})" bindtap="changeIsFinish" data-is_finish="-1">全部</view>
+      <view class="item+({{is_finish==item.id?'active':''}})" wx:for="{{all_label.status}}" wx:key="id" bindtap="changeIsFinish" data-is_finish="{{item.id}}">{{item.name}}</view>
+    </view>
+    <view class="prices-box">
+      <view class="item+({{is_free==-1?'active':''}})" bindtap="changeIsFree" data-is_free="-1">全部</view>
+      <view class="item+({{is_free==item.id?'active':''}})" wx:for="{{all_label.prices}}" wx:key="id" bindtap="changeIsFree" data-is_free="{{item.id}}">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="orders-button">
+    <view class="orders-box">
+      <view class="item+({{order==item.id?'active':''}})" wx:for="{{all_label.orders}}" wx:key="id" bindtap="changeOrder" data-order="{{item.id}}">{{item.name}}</view>
+    </view>
+    <view class="button+({{is_show?'show':''}})" bindtap="changIsShow">筛选</view>
+  </view>
+</view>
+<!-- 内容模板 -->
+<template name="content">
+  <view class="list-box" data-season_id="{{season_id}}" data-title="{{title}}" bindtap="toParticulars">
+    <cover-image lazy-load="true" class="img" src="{{vertical_cover+'@200w.jpg'}}"></cover-image>
+    <view class="title">{{title}}</view>
+    <view class="msg">
+      <text wx:if="{{is_finish==1}}">[完结]共{{total}}话</text>
+      <text wx:else>更新至{{last_short_title}}话</text>
+    </view>
+  </view>
+</template>
+
+<!-- 内容列表 -->
+<view class="classify-content" wx:if="{{!loading}}">
+  <template is="content" wx:for="{{list}}" wx:key="index" data="{{...item}}" />
+</view>
+<view class="back-top" wx:if="{{showBackTop}}" bindtap="bakcTop"></view>

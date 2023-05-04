@@ -1,0 +1,14 @@
+// 根据正则判断是否是纯数字
+function reg(title) {
+  var regexp = getRegExp('(^[0-9]*$)')
+  if(regexp.test(title)){
+    return true
+  }else{
+    return false
+  }
+}
+
+
+module.exports = {
+  reg:reg
+}

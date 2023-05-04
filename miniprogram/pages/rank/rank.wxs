@@ -1,0 +1,11 @@
+function changeShort(short) {
+  if(short.indexOf('话')!=-1){
+    return short.slice(0,short.indexOf('话'))
+  }else{
+    return short
+  }
+}
+
+module.exports={
+  changeShort:changeShort
+}

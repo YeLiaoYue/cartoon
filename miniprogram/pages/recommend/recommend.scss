@@ -1,0 +1,76 @@
+/* pages/recommend/recommend.wxss */
+.recommed-page {
+  padding: 30rpx;
+
+  .swiper-box {
+    width: 690rpx;
+    height: 300rpx;
+    margin-bottom: 30rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+  }
+
+  .recommed-box {
+    margin-bottom: 30rpx;
+
+    .recommed-img {
+      width: 690rpx;
+      height: 386rpx;
+      border-radius: 10rpx;
+      overflow: hidden;
+    }
+
+    .title-tag {
+      margin: 10rpx 0;
+      display: flex;
+      align-items: center;
+
+      .title {
+        max-width: 556rpx;
+        font-size: 40rpx;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+      }
+
+      .tag {
+        margin-left: 10rpx;
+        padding: 2rpx 8rpx;
+        font-size: 24rpx;
+        color: rgb(144, 149, 155);
+        border-radius: 6rpx;
+        background-color: rgba(192, 192, 192, 0.16);
+      }
+    }
+
+    .chapter-comment {
+      display: flex;
+      justify-content: space-between;
+      font-size: 24rpx;
+      color: #999;
+
+      .comment {
+        padding-left: 36rpx;
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0iI0QyRDZEOSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMiAyaDEyYTEgMSAwIDAxMSAxdjlhMSAxIDAgMDEtMSAxSDkuNWwtMi43MSAxLjkzNWEuNS41IDAgMDEtLjc5LS40MDdWMTNIMmExIDEgMCAwMS0xLTFWM2ExIDEgMCAwMTEtMXptMy41IDQuNmg1YS42LjYgMCAwMDAtMS4yaC01YS42LjYgMCAxMDAgMS4yem0wIDNoM2EuNi42IDAgMTAwLTEuMmgtM2EuNi42IDAgMTAwIDEuMnoiLz48L3N2Zz4=);
+      }
+    }
+  }
+  .back-top{
+    position: fixed;
+    bottom: 30rpx;
+    right: 30rpx;
+    width: 50rpx;
+    height: 50rpx;
+    padding: 10rpx;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IuWbvuWxgiAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTUuNTggMy40MmEuNTkuNTkgMCAwMS44NC0uODRsNSA1YS41OC41OCAwIDAxMCAuODRsLTUgNWEuNTkuNTkgMCAwMS0uODQtLjg0TDEwLjE1IDh6IiBmaWxsPSIjOTk5Ii8+PC9zdmc+);
+    transform: rotate(-90deg);
+    background-size: 40rpx;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: rgba(0,0,0,.8);
+    border-radius: 50%;
+  }
+}

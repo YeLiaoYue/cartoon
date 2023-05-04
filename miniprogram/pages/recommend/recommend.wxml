@@ -1,0 +1,29 @@
+<import src="recommend.skeleton.wxml"/>
+<!-- 导入骨架屏 -->
+<template is="skeleton" wx:if="{{loading}}" />
+
+<!-- 导入wxs -->
+<wxs src="./recommend.wxs" module="m1"></wxs>
+
+<view class="recommed-page">
+  <!-- 轮播图 -->
+  <swiper class="swiper-box" autoplay="true" circular="true" indicator-dots="true" indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff">
+    <swiper-item wx:for="{{banners}}" wx:key="index">
+      <cover-image  lazy-load="true" src="{{item.img}}"></cover-image>
+    </swiper-item>
+  </swiper>
+  <!-- 推荐内容 -->
+  <view class="recommed-box" wx:for="{{homeRecommend}}" wx:key="index" data-id="{{item.comic_id}}" data-title="{{item.title}}" bindtap="toParticulars">
+    <cover-image  lazy-load="true" class="recommed-img" src="{{item.img}}"></cover-image>
+    <view class="title-tag">
+      <text class="title">{{item.title}}</text>
+      <text class="tag" wx:for="{{item.styles}}" wx:for-item="tag" wx:key="id">{{tag.name}}</text>
+    </view>
+    <view class="chapter-comment">
+      <text class="chapter">{{item.sub_title}}</text>
+      <text class="comment">{{m1.commentFormatting(item.comment_total)}}</text>
+    </view>
+  </view>
+  <!-- 返回顶部 -->
+  <view class="back-top" wx:if="{{showBackTop}}" bindtap="bakcTop"></view>
+</view>

@@ -1,0 +1,80 @@
+// 显示漫画简介的部分或全部
+function changeSynopsis(synopsis, isHideSynopsis) {
+  if (isHideSynopsis) {
+    return synopsis.slice(0, 54)
+  } else {
+    return synopsis
+  }
+}
+
+//根据目录的显示或隐藏,升序或降序返回数据
+function changeList(list, isShowAll, ascending) {
+  if (ascending) {
+    if (isShowAll) {
+      return list
+    } else {
+      return list.concat([]).slice(0, 7)
+    }
+  } else {
+    if (isShowAll) {
+      return list.reverse()
+    } else {
+      return list.concat([]).reverse().slice(0, 7)
+    }
+  }
+}
+
+//更改数据单位,大于9999的数据以w为单位
+function commentFormatting(num) {
+  if (num >= 10000) {
+    return (num / 10000).toFixed(2) + 'w'
+  } else {
+    return num
+  }
+}
+
+//判断时间段
+function getDateTime(data) {
+  var now = getDate().getTime()
+  var second = Math.round((now - data*1000) / (1000))
+  var minute = Math.round(second / 60)
+  var hour = Math.round(minute / 60)
+  var day = Math.round(hour / 24)
+  var month = Math.round(day / 31)
+  var year = Math.round(month / 12)
+  if (year > 0) {
+      return year + '年前'
+  } else if (month > 0) {
+      return month + '月前'
+  } else if (day > 0) {
+      var ret = day + '天前'
+      return ret
+  } else if (hour > 0) {
+      return hour + '小时前'
+  } else if (minute > 0) {
+      return minute + '分钟前'
+  } else if (second > 0) {
+      return second + '秒前'
+  } else {
+      return '刚刚'
+  }
+}
+
+// 根据正则判断是否是纯数字
+function reg(title) {
+  var regexp = getRegExp('(^[0-9]*$)')
+  if(regexp.test(title)){
+    return true
+  }else{
+    return false
+  }
+}
+
+// 导出函数
+module.exports = {
+  changeSynopsis: changeSynopsis,
+  changeList: changeList,
+  commentFormatting: commentFormatting,
+  getDateTime: getDateTime,
+  reg:reg
+}

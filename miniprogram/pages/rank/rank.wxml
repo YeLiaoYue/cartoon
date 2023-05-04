@@ -1,0 +1,36 @@
+<!--pages/rank/rank.wxml-->
+<import src="rank.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+
+<!-- 导入wxs -->
+<wxs src="./rank.wxs" module="m1"></wxs>
+
+<!-- 头部分类按钮 -->
+<view class="header-box">
+  <view class="button+({{type==3?'active':''}})" data-num="3" bindtap="changeType">日漫榜</view>
+  <view class="button+({{type==4?'active':''}})" data-num="4" bindtap="changeType">国漫榜</view>
+  <view class="button+({{type==1?'active':''}})" data-num="1" bindtap="changeType">免费榜</view>
+</view>
+
+<!-- 内容模版 -->
+<template name="list">
+  <view class="list-box" data-id="{{comic_id}}" data-title="{{title}}" bindtap="toParticulars">
+    <view class="index">{{ 3<index+1&&index+1<10?'0'+(index+1):index+1}}</view>
+        <cover-image lazy-load="true" class="img" src="{{vertical_cover+'@204w_272h.jpg'}}"></cover-image>
+        <view class="content">
+          <view class="title">{{title}}</view>
+          <view class="msg">
+            <view class="author"><text wx:for="{{author}}" wx:for-item="name" wx:for-index="authors" wx:key="authors">{{name}} </text></view>
+            <view><text wx:for="{{styles}}" wx:for-item="style" wx:for-index="style_index" wx:key="style_index">{{style.name}}</text></view>
+            <view>更新至{{m1.changeShort(last_short_title)}}话</view>
+          </view>
+        </view>
+        <view class="({{index+1<last_rank?'rise':index+1>last_rank?'decline':'invariant'}})"></view>
+    </view>
+</template>
+
+<!-- 使用模板显示内容列表 -->
+<view class="rank-list">
+  <template wx:for="{{rank}}" wx:key="comic_id" is="list" data="{{...item,index}}" />
+</view>
+<view class="back-top" wx:if="{{showBackTop}}" bindtap="bakcTop"></view>
